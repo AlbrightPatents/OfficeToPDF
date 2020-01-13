@@ -44,6 +44,7 @@ namespace OfficeToPDF
         public static new int Convert(String inputFile, String outputFile, Hashtable options)
         {
             Boolean running = (Boolean)options["noquit"];
+            Boolean neverquit = (Boolean)options["neverquit"];
             Application word = null;
             object oMissing = System.Reflection.Missing.Value;
             Template tmpl;
@@ -537,7 +538,7 @@ namespace OfficeToPDF
                     }
                     catch (Exception) { }
                 }
-                if (word != null && !running)
+                if (word != null && !running &&!neverquit)
                 {
                     CloseWordApplication(word);
                 }
